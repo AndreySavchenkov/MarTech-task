@@ -16,10 +16,6 @@ export default function Home() {
 
   const router = useRouter();
 
-  const setSuccessState = () => {
-    setIsSuccess(true);
-  };
-
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -30,14 +26,14 @@ export default function Home() {
   };
 
   // ****** Redirect with token after loading the page ********
-  //
-  // useEffect(() => {
-  //   const token = localStorage.getItem("authToken");
 
-  //   if (token) {
-  //     router.push(`https://www.dating.com/people/#token=${token}`);
-  //   }
-  // }, [router]);
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+
+    if (token) {
+      router.push(`https://www.dating.com/people/#token=${token}`);
+    }
+  }, [router]);
 
   return (
     <div className={styles.page}>
@@ -54,7 +50,7 @@ export default function Home() {
         <List handle={handleOpenModal} />
       </div>
       <Modal isOpen={isModalOpen} onClose={resetStates}>
-        {isSuccess ? <Success /> : <RegisterForm handle={setSuccessState} />}
+        {isSuccess ? <Success /> : <RegisterForm />}
       </Modal>
     </div>
   );

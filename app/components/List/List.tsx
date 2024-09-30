@@ -7,7 +7,7 @@ import styles from "./List.module.scss";
 export const List = ({ handle }: { handle: () => void }) => {
   const items = [
     "Subscribe to our News",
-    <Button onClick={handle}>SIGN UP</Button>,
+    <Button key="button" onClick={handle}>SIGN UP</Button>,
     "Check your email inbox ",
     "Wait till September 22",
   ];

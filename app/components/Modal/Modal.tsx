@@ -10,8 +10,6 @@ type Props = {
 };
 
 const Modal = ({ isOpen, onClose, children }: Props) => {
-  if (!isOpen) return null;
-
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -27,6 +25,8 @@ const Modal = ({ isOpen, onClose, children }: Props) => {
       window.removeEventListener("keydown", handleEsc);
     };
   }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
 
   return (
     <div className={styles.overlay}>

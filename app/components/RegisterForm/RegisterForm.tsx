@@ -13,7 +13,7 @@ interface IFormInput {
   password: string;
 }
 
-export const RegisterForm = ({ handle }: { handle: () => void }) => {
+export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const {

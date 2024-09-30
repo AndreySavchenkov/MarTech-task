@@ -2,7 +2,7 @@ import styles from "./Item.module.scss";
 
 type Props = {
   serialNumber: number;
-  content: String | React.ReactNode;
+  content: string | React.ReactNode;
 };
 
 export const Item = ({ content, serialNumber }: Props) => {
