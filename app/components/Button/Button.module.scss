@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 81px;
+  width: 387px;
+  background: $button-color;
+  border: none;
+  border-radius: 10px;
+  font-size: $font-size-button-l;
+  color: $text-button-color;
+  cursor: pointer;
+
+  @media (max-width: $breakpoint-lg) {
+    width: 166px;
+    height: 45px;
+    font-size: $font-size-button-m;
+    line-height: 16px;
+  }
+
+  &:hover {
+    //TODO: move in variables
+    background: linear-gradient(238.08deg, #e617a3 0.42%, #f72826 82.5%);
+  }
+
+  &:active {
+    //TODO: move in variables
+    background: linear-gradient(238.08deg, #b31a70 0.42%, #c1141e 82.5%);
+  }
+}

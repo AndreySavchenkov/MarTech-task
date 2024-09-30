@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+.list {
+  display: flex;
+  max-width: 483px;
+  width: 100%;
+  flex-direction: column;
+  gap: 52px;
+
+  @media (max-width: $breakpoint-lg) {
+    max-width: 290px;
+    gap: 18px;
+  }
+
+  &__title {
+    background: $accent-color;
+    font-size: $font-size-heading-l;
+    font-weight: 800;
+    line-height: 85px;
+    letter-spacing: -0.05em;
+    text-align: left;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-heading-m;
+      line-height: 38px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media (max-width: $breakpoint-lg) {
+      gap: 18px;
+    }
+  }
+}

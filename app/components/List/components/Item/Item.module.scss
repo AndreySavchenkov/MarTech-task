@@ -1,0 +1,37 @@
+@import "../../../../styles/variables";
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__number {
+    max-width: 46px;
+    width: 100%;
+    background: $number-color;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: $font-size-number-l;
+    line-height: 75px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    flex: 1;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 28px;
+      font-size: $font-size-number-l;
+      line-height: 45px;
+      font-size: 33px;
+    }
+  }
+
+  &__content {
+    font-size: $font-size-text-xxxl;
+    font-weight: 600;
+
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-m;
+      line-height: 37px;
+    }
+  }
+}

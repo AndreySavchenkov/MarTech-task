@@ -1,95 +1,61 @@
+"use client";
+
 import Image from "next/image";
-import styles from "./page.module.css";
+import { List } from "./components/List/List";
+import mainImage from "../public/images/MainImage.jpg";
+import Modal from "./components/Modal/Modal";
+import { useEffect, useState } from "react";
+import { RegisterForm } from "./components/RegisterForm/RegisterForm";
+import styles from "./page.module.scss";
+import { Success } from "./components/Success/Success";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const router = useRouter();
+
+  const setSuccessState = () => {
+    setIsSuccess(true);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const resetStates = () => {
+    setIsModalOpen(false);
+    setIsSuccess(false);
+  };
+
+  // ****** Redirect with token after loading the page ********
+  //
+  // useEffect(() => {
+  //   const token = localStorage.getItem("authToken");
+
+  //   if (token) {
+  //     router.push(`https://www.dating.com/people/#token=${token}`);
+  //   }
+  // }, [router]);
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <div className={styles.wrapper}>
+        <div className={styles.wrapper__imageContainer}>
+          <Image
+            src={mainImage}
+            placeholder="blur"
+            quality={100}
+            sizes="100vw"
+            alt="main image"
+          />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <List handle={handleOpenModal} />
+      </div>
+      <Modal isOpen={isModalOpen} onClose={resetStates}>
+        {isSuccess ? <Success /> : <RegisterForm handle={setSuccessState} />}
+      </Modal>
     </div>
   );
 }

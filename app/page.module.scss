@@ -1,0 +1,59 @@
+@import "./styles/variables.scss";
+
+.page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding-top: 203px;
+  padding-left: 90px;
+
+  @media (max-width: $breakpoint-xl) {
+    padding-top: 0;
+    align-items: center;
+    padding: 100px 45px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px 15px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1494px;
+
+  @media (max-width: $breakpoint-xl) {
+    gap: 40px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     gap: 20px;
+  }
+
+  &__imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 729px;
+    width: 100%;
+    max-height: 690px;
+    height: 100%;
+
+    @media (max-width: $breakpoint-sm) {
+      max-height: 275px;
+      max-width: 290px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

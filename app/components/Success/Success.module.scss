@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.success {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+
+  &__title {
+    background: $accent-color;
+    font-size: $font-size-heading-l;
+    line-height: 85px;
+    letter-spacing: -0.05em;
+    font-weight: 800;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__text {
+    color: $text-color;
+    font-weight: 700;
+    font-size: $font-size-text-xxl;
+    line-height: 38px;
+    letter-spacing: -0.05em;
+  }
+}
