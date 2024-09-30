@@ -15,7 +15,7 @@ interface IFormInput {
 
 export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  
   const {
     register,
     formState: { errors },
@@ -49,7 +49,6 @@ export const RegisterForm = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log("Submitting data:", data);
     setLoading(true);
-    setErrorMessage("");
 
     const credentials = btoa(`${data.email}:${data.password}`);
     console.log("Encoded credentials:", credentials);
@@ -78,15 +77,14 @@ export const RegisterForm = () => {
           }
         } else {
           const error = await registrationResponse.json();
-          setErrorMessage(error.message || "Registration failed.");
+          console.error(error.message || "Registration failed.");
         }
       } else {
         const error = await authResponse.json();
-        setErrorMessage(error.message || "Authorization failed.");
+        console.error(error.message || "Authorization failed.");
       }
     } catch (error) {
       console.error("An error occurred:", error);
-      setErrorMessage("An unexpected error occurred.");
     } finally {
       setLoading(false);
     }
@@ -126,9 +124,6 @@ export const RegisterForm = () => {
               alt="error icon"
             />
           </>
-        )}
-        {errorMessage && (
-          <p className={styles.form__field__errorMessage}>{errorMessage}</p>
         )}
       </div>
       <div className={styles.form__field}>
